@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Stripe Receipt Downloader",
+  "version": "2.1.0",
+  "description": "Download receipt PDF from Stripe invoice pages",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://invoice.stripe.com/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://invoice.stripe.com/*"],
+      "js": ["content/stripe-receipt.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
