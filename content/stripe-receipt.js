@@ -9,6 +9,8 @@ function detectVendor() {
     return 'cursor';
   } else if (bodyText.includes('openai')) {
     return 'openai';
+  } else if (bodyText.includes('orbstack') || bodyText.includes('orbital labs')) {
+    return 'orbstack';
   }
 
   // Fallback to stripe
